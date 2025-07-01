@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JP Lang - Linguagem de Programação Moderna</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+        }
+
+        .logo h1 {
+            color: #2c5282;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #2c5282;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 100px 0;
+            color: white;
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #4299e1;
+            color: white;
+            box-shadow: 0 10px 20px rgba(66, 153, 225, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #3182ce;
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(66, 153, 225, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        .features {
+            background: white;
+            padding: 100px 0;
+        }
+
+        .features h3 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: #2d3748;
+        }
+
+        .tutorial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .tutorial-card {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            padding: 30px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tutorial-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .tutorial-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .tutorial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .tutorial-card h4 {
+            color: #2d3748;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tutorial-card p {
+            color: #4a5568;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .code-block {
+            background: #1a202c;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            overflow-x: auto;
+            position: relative;
+        }
+
+        .code-block::before {
+            content: 'JP Lang';
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: #667eea;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+
+        .keyword { color: #f56565; }
+        .string { color: #68d391; }
+        .number { color: #fbb6ce; }
+        .operator { color: #90cdf4; }
+
+        .expanded-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .tutorial-card.expanded .expanded-content {
+            max-height: 500px;
+        }
+
+        .installation {
+            background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+            color: white;
+            padding: 80px 0;
+        }
+
+        .installation h3 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+        }
+
+        .install-commands {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .command {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 15px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .command-desc {
+            color: #a0aec0;
+            font-size: 0.9rem;
+        }
+
+        .emoji {
+            font-size: 1.5rem;
+        }
+
+        footer {
+            background: #1a202c;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        @media (max-width: 768px) {
+            .hero h2 { font-size: 2.5rem; }
+            .tutorial-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .cta-buttons { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="icon.png" alt="JP Lang Logo">
+                    <h1>JP Lang</h1>
+                </div>
+                <nav class="nav-links">
+                    <a href="#tutorial">Tutorial</a>
+                    <a href="#installation">Instalação</a>
+                    <a href="#docs">Documentação</a>
+                    <a href="#github">GitHub</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>JP Lang</h2>
+            <p>Uma linguagem de programação moderna, simples e poderosa. Compilação nativa, sintaxe intuitiva e tipagem automática.</p>
+            <div class="cta-buttons">
+                <a href="#tutorial" class="btn btn-primary">Começar Agora</a>
+                <a href="#installation" class="btn btn-secondary">Baixar Compilador</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="tutorial">
+        <div class="container">
+            <h3>Aprenda JP Lang em Minutos</h3>
+            <p style="text-align: center; color: #4a5568; font-size: 1.1rem; margin-bottom: 40px;">
+                Clique nos cards abaixo para explorar os recursos da linguagem
+            </p>
+            
+            <div class="tutorial-grid">
+                <div class="tutorial-card" onclick="toggleCard(this)">
+                    <h4><span class="emoji">🖨️</span> Primeiro Programa</h4>
+                    <p>Aprenda a exibir texto na tela com o comando print.</p>
+                    <div class="code-block">
+<span class="keyword">print</span>(<span class="string">"Olá, JP Lang!"</span>)
+<span class="keyword">print</span>(<span class="string">"Bem-vindo ao futuro"</span>)
+                    </div>
+                    <div class="expanded-content">
+                        <p><strong>Explicação:</strong> O comando <code>print</code> exibe texto ou valores na tela. Use aspas duplas para strings.</p>
+                    </div>
+                </div>
+
+                <div class="tutorial-card" onclick="toggleCard(this)">
+                    <h4><span class="emoji">📦</span> Variáveis Inteligentes</h4>
+                    <p>Declare variáveis sem especificar tipo - JP Lang detecta automaticamente!</p>
+                    <div class="code-block">
+nome <span class="operator">=</span> <span class="string">jose silva</span>
+idade <span class="operator">=</span> <span class="number">25</span>
+altura <span class="operator">=</span> <span class="number">1.75</span>
+ativo <span class="operator">=</span> <span class="keyword">true</span>
+
+<span class="keyword">print</span>(<span class="string">"Nome:"</span>, nome)
+<span class="keyword">print</span>(<span class="string">"Idade:"</span>, idade)
+                    </div>
+                    <div class="expanded-content">
+                        <p><strong>Tipos Suportados:</strong></p>
+                        <ul style="margin: 10px 0; padding-left: 20px;">
+                            <li>Strings (texto)</li>
+                            <li>Números inteiros</li>
+                            <li>Números decimais (float)</li>
+                            <li>Booleanos (true/false)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="tutorial-card" onclick="toggleCard(this)">
+                    <h4><span class="emoji">🔀</span> Condicionais</h4>
+                    <p>Estruturas de decisão com if, elif e else.</p>
+                    <div class="code-block">
+x <span class="operator">=</span> <span class="number">8</span>
+
+<span class="keyword">if</span> (x <span class="operator">></span> <span class="number">10</span>) {
+    <span class="keyword">print</span>(<span class="string">"Muito grande"</span>)
+} <span class="keyword">elif</span> (x <span class="operator">></span> <span class="number">5</span>) {
+    <span class="keyword">print</span>(<span class="string">"Médio"</span>)
+} <span class="keyword">else</span> {
+    <span class="keyword">print</span>(<span class="string">"Pequeno"</span>)
+}
+                    </div>
+                    <div class="expanded-content">
+                        <p><strong>Operadores de Comparação:</strong></p>
+                        <ul style="margin: 10px 0; padding-left: 20px;">
+                            <li><code>==</code> - Igual a</li>
+                            <li><code>!=</code> - Diferente de</li>
+                            <li><code>&gt;</code> - Maior que</li>
+                            <li><code>&lt;</code> - Menor que</li>
+                            <li><code>&gt;=</code> - Maior ou igual</li>
+                            <li><code>&lt;=</code> - Menor ou igual</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="tutorial-card" onclick="toggleCard(this)">
+                    <h4><span class="emoji">⏰</span> Controle de Tempo</h4>
+                    <p>Use sleep para pausar a execução do programa.</p>
+                    <div class="code-block">
+<span class="keyword">print</span>(<span class="string">"Iniciando..."</span>)
+<span class="keyword">sleep</span>(<span class="number">2</span>)
+<span class="keyword">print</span>(<span class="string">"Aguardou 2 segundos"</span>)
+<span class="keyword">sleep</span>(<span class="number">1.5</span>)
+<span class="keyword">print</span>(<span class="string">"Programa finalizado!"</span>)
+                    </div>
+                    <div class="expanded-content">
+                        <p><strong>Uso:</strong> O comando <code>sleep</code> pausa a execução por um número específico de segundos. Aceita valores decimais para pausas precisas.</p>
+                    </div>
+                </div>
+
+                <div class="tutorial-card" onclick="toggleCard(this)">
+                    <h4><span class="emoji">🧮</span> Operações Matemáticas</h4>
+                    <p>Realize cálculos com operadores aritméticos.</p>
+                    <div class="code-block">
+a <span class="operator">=</span> <span class="number">10</span>
+b <span class="operator">=</span> <span class="number">3</span>
+
+soma <span class="operator">=</span> a <span class="operator">+</span> b
+subtracao <span class="operator">=</span> a <span class="operator">-</span> b
+multiplicacao <span class="operator">=</span> a <span class="operator">*</span> b
+divisao <span class="operator">=</span> a <span class="operator">/</span> b
+
+<span class="keyword">print</span>(<span class="string">"Soma:"</span>, soma)
+<span class="keyword">print</span>(<span class="string">"Divisão:"</span>, divisao)
+                    </div>
+                    <div class="expanded-content">
+                        <p><strong>Operadores Disponíveis:</strong></p>
+                        <ul style="margin: 10px 0; padding-left: 20px;">
+                            <li><code>+</code> - Adição</li>
+                            <li><code>-</code> - Subtração</li>
+                            <li><code>*</code> - Multiplicação</li>
+                            <li><code>/</code> - Divisão</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="tutorial-card" onclick="toggleCard(this)">
+                    <h4><span class="emoji">🎯</span> Exemplo Completo</h4>
+                    <p>Um programa que combina todos os conceitos aprendidos.</p>
+                    <div class="code-block">
+nome <span class="operator">=</span> <span class="string">Maria Santos</span>
+idade <span class="operator">=</span> <span class="number">28</span>
+salario <span class="operator">=</span> <span class="number">5500.75</span>
+
+<span class="keyword">print</span>(<span class="string">"=== Sistema de RH ==="</span>)
+<span class="keyword">print</span>(<span class="string">"Nome:"</span>, nome)
+
+<span class="keyword">if</span> (idade <span class="operator">>=</span> <span class="number">18</span>) {
+    <span class="keyword">print</span>(<span class="string">"Status: Funcionário ativo"</span>)
+    
+    <span class="keyword">if</span> (salario <span class="operator">></span> <span class="number">5000</span>) {
+        categoria <span class="operator">=</span> <span class="string">senior</span>
+    } <span class="keyword">else</span> {
+        categoria <span class="operator">=</span> <span class="string">junior</span>
+    }
+    
+    <span class="keyword">print</span>(<span class="string">"Categoria:"</span>, categoria)
+} <span class="keyword">else</span> {
+    <span class="keyword">print</span>(<span class="string">"Idade insuficiente"</span>)
+}
+
+<span class="keyword">sleep</span>(<span class="number">1</span>)
+<span class="keyword">print</span>(<span class="string">"Relatório finalizado!"</span>)
+                    </div>
+                    <div class="expanded-content">
+                        <p><strong>Este exemplo demonstra:</strong> Declaração de variáveis, condicionais aninhados, operações de comparação e controle de tempo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="installation" id="installation">
+        <div class="container">
+            <h3>Como Usar JP Lang</h3>
+            <div class="install-commands">
+                <div class="command">
+                    <span class="emoji">🚀</span>
+                    <div>
+                        <div><strong>jp.exe run arquivo.jp</strong></div>
+                        <div class="command-desc">Executa seu programa JP Lang diretamente</div>
+                    </div>
+                </div>
+                <div class="command">
+                    <span class="emoji">⚡</span>
+                    <div>
+                        <div><strong>jp.exe build arquivo.jp</strong></div>
+                        <div class="command-desc">Gera um executável nativo (.exe) otimizado</div>
+                    </div>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 30px; opacity: 0.8;">
+                <strong>Performance nativa:</strong> JP Lang compila diretamente para código de máquina, garantindo execução rápida e eficiente.
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 JP Lang. Uma linguagem criada para simplicidade e performance.</p>
+            <p style="margin-top: 10px; opacity: 0.7;">
+                Desenvolvido com ❤️ para a comunidade de programadores
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleCard(card) {
+            const isExpanded = card.classList.contains('expanded');
+            
+            // Fechar todos os outros cards
+            document.querySelectorAll('.tutorial-card').forEach(c => {
+                c.classList.remove('expanded');
+            });
+            
+            // Abrir o card clicado se ele não estava expandido
+            if (!isExpanded) {
+                card.classList.add('expanded');
+            }
+        }
+
+        // Smooth scrolling para links âncora
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Efeito de parallax sutil no hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            hero.style.transform = `translateY(${scrolled * 0.3}px)`;
+        });
+    </script>
+</body>
+</html>
