@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JP Lang - Linguagem de Programação Moderna</title>
+    <title>JP Lang - Linguagem de Programação em Português</title>
     <style>
         * {
             margin: 0;
@@ -32,7 +32,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         .header-content {
@@ -47,10 +47,17 @@
             gap: 15px;
         }
 
-        .logo img {
+        .logo-icon {
             width: 50px;
             height: 50px;
-            border-radius: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
         }
 
         .logo h1 {
@@ -72,7 +79,7 @@
         }
 
         .nav-links a:hover {
-            color: #2c5282;
+            color: #667eea;
         }
 
         .hero {
@@ -88,13 +95,42 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            opacity: 0.95;
+        }
+
         .hero p {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             margin-bottom: 40px;
             opacity: 0.9;
-            max-width: 600px;
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
         }
 
         .cta-buttons {
@@ -105,7 +141,7 @@
         }
 
         .btn {
-            padding: 15px 30px;
+            padding: 15px 35px;
             border: none;
             border-radius: 50px;
             font-size: 1.1rem;
@@ -119,19 +155,20 @@
         .btn-primary {
             background: #4299e1;
             color: white;
-            box-shadow: 0 10px 20px rgba(66, 153, 225, 0.3);
+            box-shadow: 0 10px 25px rgba(66, 153, 225, 0.4);
         }
 
         .btn-primary:hover {
             background: #3182ce;
             transform: translateY(-2px);
-            box-shadow: 0 15px 30px rgba(66, 153, 225, 0.4);
+            box-shadow: 0 15px 35px rgba(66, 153, 225, 0.5);
         }
 
         .btn-secondary {
-            background: transparent;
+            background: rgba(255, 255, 255, 0.2);
             color: white;
             border: 2px solid white;
+            backdrop-filter: blur(10px);
         }
 
         .btn-secondary:hover {
@@ -142,14 +179,62 @@
 
         .features {
             background: white;
-            padding: 100px 0;
+            padding: 80px 0;
         }
 
-        .features h3 {
+        .section-title {
             text-align: center;
             font-size: 2.5rem;
-            margin-bottom: 60px;
+            margin-bottom: 20px;
             color: #2d3748;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #718096;
+            font-size: 1.1rem;
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: #667eea;
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            color: #2d3748;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .feature-card p {
+            color: #4a5568;
+            line-height: 1.7;
         }
 
         .tutorial-grid {
@@ -160,12 +245,12 @@
         }
 
         .tutorial-card {
-            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            background: white;
             padding: 30px;
             border-radius: 20px;
             cursor: pointer;
             transition: all 0.3s ease;
-            border: 1px solid #e2e8f0;
+            border: 2px solid #e2e8f0;
             position: relative;
             overflow: hidden;
         }
@@ -189,6 +274,7 @@
         .tutorial-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-color: #667eea;
         }
 
         .tutorial-card h4 {
@@ -201,7 +287,7 @@
         }
 
         .tutorial-card p {
-            color: #4a5568;
+            color: #718096;
             margin-bottom: 20px;
             line-height: 1.7;
         }
@@ -210,41 +296,61 @@
             background: #1a202c;
             color: #e2e8f0;
             padding: 20px;
-            border-radius: 10px;
-            font-family: 'Courier New', monospace;
+            border-radius: 12px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
             font-size: 0.9rem;
-            line-height: 1.4;
+            line-height: 1.6;
             overflow-x: auto;
             position: relative;
-            white-space: pre-wrap;
+            margin: 15px 0;
         }
 
         .code-block::before {
-            content: 'JP Lang';
+            content: 'JP';
             position: absolute;
             top: 10px;
             right: 15px;
-            background: #667eea;
+            background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
-            padding: 2px 8px;
-            border-radius: 4px;
+            padding: 4px 10px;
+            border-radius: 6px;
             font-size: 0.7rem;
             font-weight: bold;
         }
 
-        .keyword { color: #f56565; }
+        .keyword { color: #fc8181; font-weight: bold; }
         .string { color: #68d391; }
         .number { color: #fbb6ce; }
-        .operator { color: #90cdf4; }
+        .comment { color: #718096; font-style: italic; }
+        .function { color: #90cdf4; }
 
         .expanded-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease;
+            transition: max-height 0.4s ease;
         }
 
         .tutorial-card.expanded .expanded-content {
-            max-height: 500px;
+            max-height: 800px;
+            margin-top: 20px;
+        }
+
+        .expanded-content ul {
+            margin: 15px 0;
+            padding-left: 25px;
+        }
+
+        .expanded-content li {
+            margin: 8px 0;
+            color: #4a5568;
+        }
+
+        .expanded-content code {
+            background: #edf2f7;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Consolas', monospace;
+            color: #667eea;
         }
 
         .installation {
@@ -253,52 +359,127 @@
             padding: 80px 0;
         }
 
-        .installation h3 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 40px;
+        .install-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
         }
 
-        .install-commands {
-            background: rgba(0, 0, 0, 0.3);
+        .install-step {
+            background: rgba(255, 255, 255, 0.1);
             padding: 30px;
             border-radius: 15px;
-            margin: 30px 0;
             backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .command {
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 15px;
-            margin: 15px 0;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.1);
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .command-box {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 15px 20px;
             border-radius: 10px;
-            font-family: 'Courier New', monospace;
+            font-family: 'Consolas', monospace;
+            margin: 15px 0;
+            border-left: 4px solid #667eea;
         }
 
-        .command-desc {
-            color: #a0aec0;
+        .performance {
+            background: #f7fafc;
+            padding: 80px 0;
+        }
+
+        .comparison-table {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin: 40px 0;
+        }
+
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .comparison-table td {
+            padding: 20px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .comparison-table tr:hover {
+            background: #f7fafc;
+        }
+
+        .speed-bar {
+            height: 30px;
+            background: linear-gradient(90deg, #68d391, #48bb78);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            color: white;
+            font-weight: bold;
             font-size: 0.9rem;
-        }
-
-        .emoji {
-            font-size: 1.5rem;
         }
 
         footer {
             background: #1a202c;
             color: white;
             text-align: center;
-            padding: 40px 0;
+            padding: 50px 0;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #90cdf4;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #63b3ed;
         }
 
         @media (max-width: 768px) {
             .hero h2 { font-size: 2.5rem; }
+            .hero .subtitle { font-size: 1.2rem; }
             .tutorial-grid { grid-template-columns: 1fr; }
             .nav-links { display: none; }
-            .cta-buttons { flex-direction: column; align-items: center; }
+            .cta-buttons { flex-direction: column; width: 100%; }
+            .cta-buttons .btn { width: 100%; }
+            .stats { flex-direction: column; gap: 20px; }
+        }
+
+        .emoji {
+            font-size: 1.5rem;
         }
     </style>
 </head>
@@ -307,14 +488,14 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <img src="icon.png" alt="JP Lang Logo">
+                    <div class="logo-icon">JP</div>
                     <h1>JP Lang</h1>
                 </div>
                 <nav class="nav-links">
                     <a href="#tutorial">Tutorial</a>
+                    <a href="#performance">Performance</a>
                     <a href="#installation">Instalação</a>
-                    <a href="#docs">Documentação</a>
-                    <a href="#github">GitHub</a>
+                    <a href="https://github.com/Joaopaulopadilha/JP_BR" target="_blank">GitHub</a>
                 </nav>
             </div>
         </div>
@@ -322,157 +503,366 @@
 
     <section class="hero">
         <div class="container">
-            <h2>JP Lang</h2>
-            <p>Uma linguagem de programação moderna, simples e poderosa. Compilação nativa, sintaxe intuitiva e tipagem automática.</p>
+            <h2>JP Lang 🇧🇷</h2>
+            <p class="subtitle">Linguagem de Programação em Português</p>
+            <p>Sintaxe intuitiva, compilação nativa para C++, performance excepcional.<br>
+            Aprenda a programar na sua língua, com a velocidade de linguagens compiladas.</p>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number">50x</span>
+                    <span class="stat-label">Mais rápido que Python</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Código nativo</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">UTF-8</span>
+                    <span class="stat-label">Suporte completo</span>
+                </div>
+            </div>
+
             <div class="cta-buttons">
                 <a href="#tutorial" class="btn btn-primary">Começar Agora</a>
-                <a href="#installation" class="btn btn-secondary">Baixar Compilador</a>
+                <a href="#installation" class="btn btn-secondary">Download</a>
             </div>
         </div>
     </section>
 
-    <section class="features" id="tutorial">
+    <section class="features">
         <div class="container">
-            <h3>Aprenda JP Lang em Minutos</h3>
-            <p style="text-align: center; color: #4a5568; font-size: 1.1rem; margin-bottom: 40px;">
-                Clique nos cards abaixo para explorar os recursos da linguagem
+            <h2 class="section-title">Por que JP Lang?</h2>
+            <p class="section-subtitle">
+                Uma linguagem moderna que combina simplicidade com performance de nível profissional
+            </p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🇧🇷</div>
+                    <h3>Sintaxe em Português</h3>
+                    <p>Comandos naturais como <code>sair()</code>, <code>se</code>, <code>enquanto</code>, <code>para</code>. Aprenda programação na sua língua materna!</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Performance Nativa</h3>
+                    <p>Compila para C++ otimizado com flag -O3. Mesma velocidade de C/C++, 50x mais rápido que Python interpretado.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Tipagem Automática</h3>
+                    <p>Inferência inteligente de tipos. Escreva menos código, o compilador cuida do resto automaticamente.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📦</div>
+                    <h3>Módulos Nativos</h3>
+                    <p>Sistema único de bibliotecas com @imports/@exports. Integre código C++ puro facilmente.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Terminal Colorido</h3>
+                    <p>Comandos como <code>sair_verde()</code>, <code>sair_vermelho()</code> para saídas visuais atrativas.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🔧</div>
+                    <h3>Biblioteca Padrão Rica</h3>
+                    <p>Matemática, strings, tempo, random, arquivos - tudo incluído e pronto para usar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="tutorial" style="background: #f7fafc;">
+        <div class="container">
+            <h2 class="section-title">Aprenda JP Lang em Minutos</h2>
+            <p class="section-subtitle">
+                Clique nos exemplos abaixo para ver mais detalhes
             </p>
             
             <div class="tutorial-grid">
                 <div class="tutorial-card" onclick="toggleCard(this)">
-                    <h4><span class="emoji">🖨️</span> Primeiro Programa</h4>
-                    <p>Aprenda a exibir texto na tela com o comando print.</p>
-                    <div class="code-block">
-<span class="keyword">print</span>(<span class="string">"Olá, JP Lang!"</span>)
-<span class="keyword">print</span>(<span class="string">"Bem-vindo ao futuro"</span>)
-                    </div>
+                    <h4><span class="emoji">👋</span> Olá Mundo</h4>
+                    <p>Seu primeiro programa em JP Lang</p>
+                    <div class="code-block"><span class="keyword">sair</span>(<span class="string">"Olá, Mundo!"</span>)
+<span class="keyword">sair</span>(<span class="string">"Bem-vindo ao JP Lang"</span>)</div>
                     <div class="expanded-content">
-                        <p><strong>Explicação:</strong> O comando <code>print</code> exibe texto ou valores na tela. Use aspas duplas para strings.</p>
+                        <p><strong>Explicação:</strong></p>
+                        <ul>
+                            <li><code>sair()</code> - Imprime texto na tela (equivalente ao print/cout)</li>
+                            <li>Use aspas duplas para strings</li>
+                            <li>Suporte completo a acentuação e UTF-8</li>
+                        </ul>
                     </div>
                 </div>
 
                 <div class="tutorial-card" onclick="toggleCard(this)">
-                    <h4><span class="emoji">📦</span> Variáveis Inteligentes</h4>
-                    <p>Declare variáveis sem especificar tipo - JP Lang detecta automaticamente!</p>
-                    <div class="code-block">
-nome <span class="operator">=</span> <span class="string">jose silva</span>
+                    <h4><span class="emoji">📦</span> Variáveis</h4>
+                    <p>Declaração automática com inferência de tipos</p>
+                    <div class="code-block">nome <span class="operator">=</span> <span class="string">"João Silva"</span>
 idade <span class="operator">=</span> <span class="number">25</span>
 altura <span class="operator">=</span> <span class="number">1.75</span>
-ativo <span class="operator">=</span> <span class="keyword">true</span>
+ativo <span class="operator">=</span> <span class="keyword">verdadeiro</span>
 
-<span class="keyword">print</span>(<span class="string">"Nome:"</span>, nome)
-<span class="keyword">print</span>(<span class="string">"Idade:"</span>, idade)
-                    </div>
+<span class="keyword">sair</span>(<span class="string">"Nome: {nome}, Idade: {idade}"</span>)</div>
                     <div class="expanded-content">
                         <p><strong>Tipos Suportados:</strong></p>
-                        <ul style="margin: 10px 0; padding-left: 20px;">
-                            <li>Strings (texto)</li>
-                            <li>Números inteiros</li>
-                            <li>Números decimais (float)</li>
-                            <li>Booleanos (true/false)</li>
+                        <ul>
+                            <li><code>string</code> - Texto entre aspas</li>
+                            <li><code>int</code> - Números inteiros</li>
+                            <li><code>double</code> - Números decimais</li>
+                            <li><code>bool</code> - verdadeiro/falso</li>
+                        </ul>
+                        <p><strong>Interpolação:</strong> Use <code>{variavel}</code> dentro de strings!</p>
+                    </div>
+                </div>
+
+                <div class="tutorial-card" onclick="toggleCard(this)">
+                    <h4><span class="emoji">🎨</span> Saída Colorida</h4>
+                    <p>Torne seus programas mais visuais</p>
+                    <div class="code-block"><span class="keyword">sair_verde</span>(<span class="string">"✓ Operação bem-sucedida!"</span>)
+<span class="keyword">sair_vermelho</span>(<span class="string">"✗ Erro crítico!"</span>)
+<span class="keyword">sair_azul</span>(<span class="string">"ℹ Informação"</span>)
+<span class="keyword">sair_amarelo</span>(<span class="string">"⚠ Aviso importante"</span>)</div>
+                    <div class="expanded-content">
+                        <p><strong>Cores Disponíveis:</strong></p>
+                        <ul>
+                            <li><code>sair_verde()</code> - Sucesso</li>
+                            <li><code>sair_vermelho()</code> - Erros</li>
+                            <li><code>sair_azul()</code> - Informações</li>
+                            <li><code>sair_amarelo()</code> - Avisos</li>
+                            <li><code>sair_magenta()</code>, <code>sair_ciano()</code>, etc.</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="tutorial-card" onclick="toggleCard(this)">
                     <h4><span class="emoji">🔀</span> Condicionais</h4>
-                    <p>Estruturas de decisão com if, elif e else.</p>
-                    <div class="code-block">
-x <span class="operator">=</span> <span class="number">8</span>
+                    <p>Estruturas de decisão em português</p>
+                    <div class="code-block">idade <span class="operator">=</span> <span class="number">18</span>
 
-<span class="keyword">if</span> (x <span class="operator">></span> <span class="number">10</span>) {
-    <span class="keyword">print</span>(<span class="string">"Muito grande"</span>)
-} <span class="keyword">elif</span> (x <span class="operator">></span> <span class="number">5</span>) {
-    <span class="keyword">print</span>(<span class="string">"Médio"</span>)
-} <span class="keyword">else</span> {
-    <span class="keyword">print</span>(<span class="string">"Pequeno"</span>)
-}
-                    </div>
+<span class="keyword">se</span> idade <span class="operator">>=</span> <span class="number">18</span>:
+    <span class="keyword">sair_verde</span>(<span class="string">"Maior de idade"</span>)
+<span class="keyword">ou_se</span> idade <span class="operator">>=</span> <span class="number">13</span>:
+    <span class="keyword">sair</span>(<span class="string">"Adolescente"</span>)
+<span class="keyword">senao</span>:
+    <span class="keyword">sair</span>(<span class="string">"Criança"</span>)</div>
                     <div class="expanded-content">
-                        <p><strong>Operadores de Comparação:</strong></p>
-                        <ul style="margin: 10px 0; padding-left: 20px;">
-                            <li><code>==</code> - Igual a</li>
-                            <li><code>!=</code> - Diferente de</li>
-                            <li><code>&gt;</code> - Maior que</li>
-                            <li><code>&lt;</code> - Menor que</li>
-                            <li><code>&gt;=</code> - Maior ou igual</li>
-                            <li><code>&lt;=</code> - Menor ou igual</li>
+                        <p><strong>Sintaxe:</strong></p>
+                        <ul>
+                            <li><code>se</code> - Condição inicial (if)</li>
+                            <li><code>ou_se</code> - Condição alternativa (else if)</li>
+                            <li><code>senao</code> - Caso contrário (else)</li>
+                        </ul>
+                        <p><strong>Operadores:</strong> ==, !=, &gt;, &lt;, &gt;=, &lt;=, e, ou, nao</p>
+                    </div>
+                </div>
+
+                <div class="tutorial-card" onclick="toggleCard(this)">
+                    <h4><span class="emoji">🔁</span> Loops</h4>
+                    <p>Repetições de forma intuitiva</p>
+                    <div class="code-block"><span class="comment">// Repetir N vezes</span>
+<span class="keyword">repetir</span>(<span class="number">5</span>):
+    <span class="keyword">sair</span>(<span class="string">"Olá!"</span>)
+
+<span class="comment">// Loop while</span>
+contador <span class="operator">=</span> <span class="number">0</span>
+<span class="keyword">enquanto</span> contador <span class="operator">&lt;</span> <span class="number">3</span>:
+    <span class="keyword">sair</span>(contador)
+    contador <span class="operator">=</span> contador <span class="operator">+</span> <span class="number">1</span>
+
+<span class="comment">// Loop for com range</span>
+<span class="keyword">para</span> i <span class="keyword">em</span> <span class="function">intervalo</span>(<span class="number">1</span>, <span class="number">6</span>):
+    <span class="keyword">sair</span>(<span class="string">"Número: {i}"</span>)</div>
+                    <div class="expanded-content">
+                        <p><strong>Tipos de Loops:</strong></p>
+                        <ul>
+                            <li><code>repetir(n)</code> - Executa n vezes</li>
+                            <li><code>enquanto</code> - While loop</li>
+                            <li><code>para...em</code> - For each/range</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="tutorial-card" onclick="toggleCard(this)">
-                    <h4><span class="emoji">⏰</span> Controle de Tempo</h4>
-                    <p>Use sleep para pausar a execução do programa.</p>
-                    <div class="code-block">
-<span class="keyword">print</span>(<span class="string">"Iniciando..."</span>)
-<span class="keyword">sleep</span>(<span class="number">2</span>)
-<span class="keyword">print</span>(<span class="string">"Aguardou 2 segundos"</span>)
-<span class="keyword">sleep</span>(<span class="number">1.5</span>)
-<span class="keyword">print</span>(<span class="string">"Programa finalizado!"</span>)
-                    </div>
+                    <h4><span class="emoji">⚙️</span> Funções</h4>
+                    <p>Crie suas próprias funções reutilizáveis</p>
+                    <div class="code-block"><span class="keyword">funcao</span> <span class="function">saudar</span>(nome):
+    <span class="keyword">sair</span>(<span class="string">"Olá, {nome}!"</span>)
+
+<span class="keyword">funcao</span> <span class="function">somar</span>(a, b):
+    <span class="keyword">retorna</span> a <span class="operator">+</span> b
+
+<span class="function">saudar</span>(<span class="string">"Maria"</span>)
+resultado <span class="operator">=</span> <span class="function">somar</span>(<span class="number">10</span>, <span class="number">20</span>)
+<span class="keyword">sair</span>(<span class="string">"Soma: {resultado}"</span>)</div>
                     <div class="expanded-content">
-                        <p><strong>Uso:</strong> O comando <code>sleep</code> pausa a execução por um número específico de segundos. Aceita valores decimais para pausas precisas.</p>
-                    </div>
-                </div>
-
-                <div class="tutorial-card" onclick="toggleCard(this)">
-                    <h4><span class="emoji">🧮</span> Operações Matemáticas</h4>
-                    <p>Realize cálculos com operadores aritméticos.</p>
-                    <div class="code-block">
-a <span class="operator">=</span> <span class="number">10</span>
-b <span class="operator">=</span> <span class="number">3</span>
-
-soma <span class="operator">=</span> a <span class="operator">+</span> b
-subtracao <span class="operator">=</span> a <span class="operator">-</span> b
-multiplicacao <span class="operator">=</span> a <span class="operator">*</span> b
-divisao <span class="operator">=</span> a <span class="operator">/</span> b
-
-<span class="keyword">print</span>(<span class="string">"Soma:"</span>, soma)
-<span class="keyword">print</span>(<span class="string">"Divisão:"</span>, divisao)
-                    </div>
-                    <div class="expanded-content">
-                        <p><strong>Operadores Disponíveis:</strong></p>
-                        <ul style="margin: 10px 0; padding-left: 20px;">
-                            <li><code>+</code> - Adição</li>
-                            <li><code>-</code> - Subtração</li>
-                            <li><code>*</code> - Multiplicação</li>
-                            <li><code>/</code> - Divisão</li>
+                        <p><strong>Características:</strong></p>
+                        <ul>
+                            <li>Templates automáticos - aceita qualquer tipo</li>
+                            <li>Use <code>retorna</code> para retornar valores</li>
+                            <li>Parâmetros flexíveis e tipagem automática</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="tutorial-card" onclick="toggleCard(this)">
-                    <h4><span class="emoji">🎯</span> Exemplo Completo</h4>
-                    <p>Um programa que combina todos os conceitos aprendidos.</p>
-                    <div class="code-block">
-nome <span class="operator">=</span> <span class="string">Maria Santos</span>
-idade <span class="operator">=</span> <span class="number">28</span>
-salario <span class="operator">=</span> <span class="number">5500.75</span>
+                    <h4><span class="emoji">📋</span> Listas</h4>
+                    <p>Trabalhe com arrays/vetores facilmente</p>
+                    <div class="code-block">frutas <span class="operator">=</span> [<span class="string">"maçã"</span>, <span class="string">"banana"</span>, <span class="string">"laranja"</span>]
 
-<span class="keyword">print</span>(<span class="string">"=== Sistema de RH ==="</span>)
-<span class="keyword">print</span>(<span class="string">"Nome:"</span>, nome)
+<span class="keyword">para</span> fruta <span class="keyword">em</span> frutas:
+    <span class="keyword">sair</span>(fruta)
 
-<span class="keyword">if</span> (idade <span class="operator">>=</span> <span class="number">18</span>) {
-    <span class="keyword">print</span>(<span class="string">"Status: Funcionário ativo"</span>)
-    
-    <span class="keyword">if</span> (salario <span class="operator">></span> <span class="number">5000</span>) {
-        categoria <span class="operator">=</span> <span class="string">senior</span>
-    } <span class="keyword">else</span> {
-        categoria <span class="operator">=</span> <span class="string">junior</span>
-    }
-    
-    <span class="keyword">print</span>(<span class="string">"Categoria:"</span>, categoria)
-} <span class="keyword">else</span> {
-    <span class="keyword">print</span>(<span class="string">"Idade insuficiente"</span>)
-}
-
-<span class="keyword">sleep</span>(<span class="number">1</span>)
-<span class="keyword">print</span>(<span class="string">"Relatório finalizado!"</span>)
-                    </div>
+frutas.<span class="function">adicionar</span>(<span class="string">"uva"</span>)
+tamanho <span class="operator">=</span> frutas.<span class="function">tamanho</span>()
+<span class="keyword">sair</span>(<span class="string">"Total: {tamanho}"</span>)</div>
                     <div class="expanded-content">
-                        <p><strong>Este exemplo demonstra:</strong> Declaração de variáveis, condicionais aninhados, operações de comparação e controle de tempo.</p>
+                        <p><strong>Métodos de Listas:</strong></p>
+                        <ul>
+                            <li><code>adicionar(item)</code> - Adiciona elemento</li>
+                            <li><code>remover(indice)</code> - Remove por índice</li>
+                            <li><code>tamanho()</code> - Retorna tamanho</li>
+                            <li><code>limpar()</code> - Remove todos</li>
+                            <li><code>vazia()</code> - Verifica se está vazia</li>
+                        </ul>
                     </div>
+                </div>
+
+                <div class="tutorial-card" onclick="toggleCard(this)">
+                    <h4><span class="emoji">🏛️</span> Classes</h4>
+                    <p>Programação orientada a objetos</p>
+                    <div class="code-block"><span class="keyword">classe</span> Pessoa:
+    nome: <span class="keyword">texto</span>
+    idade: <span class="keyword">int</span>
+    
+    <span class="keyword">funcao</span> <span class="function">criar</span>(nome, idade):
+        <span class="keyword">este</span>.nome <span class="operator">=</span> nome
+        <span class="keyword">este</span>.idade <span class="operator">=</span> idade
+        <span class="keyword">retorna</span> <span class="keyword">este</span>
+    
+    <span class="keyword">funcao</span> <span class="function">apresentar</span>():
+        <span class="keyword">sair</span>(<span class="string">"Olá, sou {<span class="keyword">este</span>.nome}"</span>)
+
+pessoa <span class="operator">=</span> Pessoa.<span class="function">criar</span>(<span class="string">"João"</span>, <span class="number">25</span>)
+pessoa.<span class="function">apresentar</span>()</div>
+                    <div class="expanded-content">
+                        <p><strong>POO em JP Lang:</strong></p>
+                        <ul>
+                            <li>Use <code>este</code> para referenciar a instância (this/self)</li>
+                            <li>Método <code>criar()</code> é o construtor</li>
+                            <li>Tipos explícitos opcionais nos atributos</li>
+                            <li>Compila para structs C++ eficientes</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="tutorial-card" onclick="toggleCard(this)">
+                    <h4><span class="emoji">📚</span> Biblioteca Padrão</h4>
+                    <p>Funções úteis prontas para usar</p>
+                    <div class="code-block"><span class="comment">// Matemática</span>
+raiz <span class="operator">=</span> std.<span class="function">raiz</span>(<span class="number">144</span>)  <span class="comment">// 12</span>
+pot <span class="operator">=</span> std.<span class="function">potencia</span>(<span class="number">2</span>, <span class="number">10</span>)  <span class="comment">// 1024</span>
+
+<span class="comment">// Random</span>
+numero <span class="operator">=</span> std.<span class="function">aleatorio</span>(<span class="number">1</span>, <span class="number">100</span>)
+
+<span class="comment">// Strings</span>
+texto <span class="operator">=</span> std.<span class="function">maiuscula</span>(<span class="string">"hello"</span>)
+
+<span class="comment">// Tempo</span>
+std.<span class="function">pausa</span>(<span class="number">1000</span>)  <span class="comment">// 1 segundo</span>
+std.<span class="function">limpar_tela</span>()</div>
+                    <div class="expanded-content">
+                        <p><strong>Categorias da Stdlib:</strong></p>
+                        <ul>
+                            <li><strong>Matemática:</strong> raiz, potencia, abs, arredondar, min, max</li>
+                            <li><strong>Random:</strong> aleatorio, aleatorio_decimal</li>
+                            <li><strong>Strings:</strong> maiuscula, minuscula, substituir, tamanho</li>
+                            <li><strong>Tempo:</strong> pausa, tempo_atual</li>
+                            <li><strong>Sistema:</strong> limpar_tela, parar</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="performance" id="performance">
+        <div class="container">
+            <h2 class="section-title">Performance Excepcional</h2>
+            <p class="section-subtitle">
+                JP Lang compila para C++ nativo com otimização -O3. Performance comparável a linguagens de sistema.
+            </p>
+
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Linguagem</th>
+                            <th>Velocidade Relativa</th>
+                            <th>Tipo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>JP Lang</strong></td>
+                            <td><div class="speed-bar" style="width: 100%;">100% (Nativo)</div></td>
+                            <td>Compilado (C++)</td>
+                        </tr>
+                        <tr>
+                            <td>C / C++</td>
+                            <td><div class="speed-bar" style="width: 100%;">100%</div></td>
+                            <td>Compilado</td>
+                        </tr>
+                        <tr>
+                            <td>Rust</td>
+                            <td><div class="speed-bar" style="width: 98%;">98%</div></td>
+                            <td>Compilado</td>
+                        </tr>
+                        <tr>
+                            <td>Go</td>
+                            <td><div class="speed-bar" style="width: 80%;">80%</div></td>
+                            <td>Compilado</td>
+                        </tr>
+                        <tr>
+                            <td>Java</td>
+                            <td><div class="speed-bar" style="width: 75%;">75%</div></td>
+                            <td>JIT (VM)</td>
+                        </tr>
+                        <tr>
+                            <td>JavaScript (V8)</td>
+                            <td><div class="speed-bar" style="width: 40%; background: linear-gradient(90deg, #fbbf24, #f59e0b);">40%</div></td>
+                            <td>JIT</td>
+                        </tr>
+                        <tr>
+                            <td>Python</td>
+                            <td><div class="speed-bar" style="width: 2%; background: linear-gradient(90deg, #ef4444, #dc2626);">2%</div></td>
+                            <td>Interpretado</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>Otimização -O3</h3>
+                    <p>Compilação com máxima otimização: loop unrolling, inlining, vectorização SIMD automática.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Zero Overhead</h3>
+                    <p>Sem interpretador, VM ou Garbage Collector. Código de máquina direto, sem intermediários.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Templates C++</h3>
+                    <p>Funções genéricas compilam para código especializado e otimizado automaticamente.</p>
                 </div>
             </div>
         </div>
@@ -480,34 +870,89 @@ salario <span class="operator">=</span> <span class="number">5500.75</span>
 
     <section class="installation" id="installation">
         <div class="container">
-            <h3>Como Usar JP Lang</h3>
-            <div class="install-commands">
-                <div class="command">
-                    <span class="emoji">🚀</span>
-                    <div>
-                        <div><strong>jp.exe run arquivo.jp</strong></div>
-                        <div class="command-desc">Executa seu programa JP Lang diretamente</div>
+            <h2 class="section-title">Instalação e Uso</h2>
+            <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">
+                Comece a programar em JP Lang em menos de 5 minutos
+            </p>
+
+            <div class="install-steps">
+                <div class="install-step">
+                    <div class="step-number">1</div>
+                    <h3>Download</h3>
+                    <p>Baixe o compilador JP Lang para Windows:</p>
+                    <div class="command-box">
+                        <a href="https://github.com/Joaopaulopadilha/JP_BR/releases/tag/v1.0" style="color: #90cdf4; text-decoration: none;">
+                            📥 Baixar jp.exe (última versão)
+                        </a>
                     </div>
                 </div>
-                <div class="command">
-                    <span class="emoji">⚡</span>
-                    <div>
-                        <div><strong>jp.exe build arquivo.jp</strong></div>
-                        <div class="command-desc">Gera um executável nativo (.exe) otimizado</div>
+
+                <div class="install-step">
+                    <div class="step-number">2</div>
+                    <h3>Criar Programa</h3>
+                    <p>Crie um arquivo <code>ola.jp</code> com:</p>
+                    <div class="command-box">
+sair("Olá, JP Lang!")<br>
+sair_verde("Meu primeiro programa!")
                     </div>
+                </div>
+
+                <div class="install-step">
+                    <div class="step-number">3</div>
+                    <h3>Compilar e Executar</h3>
+                    <p>No terminal, execute:</p>
+                    <div class="command-box">
+                        jp.exe ola.jp
+                    </div>
+                    <p style="margin-top: 15px; font-size: 0.9rem; opacity: 0.8;">
+                        O executável será gerado em <code>output/executavel/</code>
+                    </p>
                 </div>
             </div>
-            <p style="text-align: center; margin-top: 30px; opacity: 0.8;">
-                <strong>Performance nativa:</strong> JP Lang compila diretamente para código de máquina, garantindo execução rápida e eficiente.
-            </p>
+
+            <div style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px; margin-top: 40px; backdrop-filter: blur(10px);">
+                <h3 style="margin-bottom: 20px;">📁 Estrutura de Arquivos</h3>
+                <div class="command-box" style="background: rgba(0,0,0,0.3);">
+projeto/<br>
+├── jp.exe              <span style="opacity: 0.7;">// Compilador</span><br>
+├── meu_programa.jp     <span style="opacity: 0.7;">// Seu código</span><br>
+└── output/<br>
+    ├── codigo_cpp/     <span style="opacity: 0.7;">// C++ gerado</span><br>
+    └── executavel/     <span style="opacity: 0.7;">// .exe final</span>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px;">
+                <p style="opacity: 0.9; font-size: 1.1rem; margin-bottom: 20px;">
+                    <strong>Requisitos:</strong> Windows 7+ • Nenhuma dependência externa
+                </p>
+                <a href="https://github.com/Joaopaulopadilha/JP_BR" class="btn btn-primary">
+                    Ver no GitHub →
+                </a>
+            </div>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 JP Lang. Uma linguagem criada para simplicidade e performance.</p>
-            <p style="margin-top: 10px; opacity: 0.7;">
-                Desenvolvido com ❤️ para a comunidade de programadores
+            <h3 style="margin-bottom: 20px;">JP Lang</h3>
+            <p style="opacity: 0.9; max-width: 600px; margin: 0 auto 30px;">
+                Uma linguagem de programação brasileira, moderna e poderosa. <br>
+                Desenvolvida para ensinar programação de forma acessível, sem sacrificar performance.
+            </p>
+            
+            <div class="footer-links">
+                <a href="https://github.com/Joaopaulopadilha/JP_BR">GitHub</a>
+                <a href="https://github.com/Joaopaulopadilha/JP_BR/wiki">Documentação</a>
+                <a href="https://github.com/Joaopaulopadilha/JP_BR/releases">Downloads</a>
+                <a href="https://github.com/Joaopaulopadilha/JP_BR/issues">Reportar Bug</a>
+            </div>
+
+            <p style="margin-top: 30px; opacity: 0.7;">
+                &copy; 2024 JP Lang. Desenvolvido com ❤️ para a comunidade brasileira de programadores.
+            </p>
+            <p style="margin-top: 10px; opacity: 0.6; font-size: 0.9rem;">
+                Licença MIT • Código aberto e gratuito
             </p>
         </div>
     </footer>
@@ -527,7 +972,7 @@ salario <span class="operator">=</span> <span class="number">5500.75</span>
             }
         }
 
-        // Smooth scrolling para links âncora
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -541,11 +986,48 @@ salario <span class="operator">=</span> <span class="number">5500.75</span>
             });
         });
 
-        // Efeito de parallax sutil no hero
+        // Parallax suave no hero
+        let ticking = false;
         window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero');
-            hero.style.transform = `translateY(${scrolled * 0.3}px)`;
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const scrolled = window.pageYOffset;
+                    const hero = document.querySelector('.hero');
+                    if (hero && scrolled < window.innerHeight) {
+                        hero.style.transform = `translateY(${scrolled * 0.3}px)`;
+                        hero.style.opacity = 1 - (scrolled / 800);
+                    }
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+
+        // Animação de fade-in nos cards quando entram na viewport
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '0';
+                    entry.target.style.transform = 'translateY(20px)';
+                    
+                    setTimeout(() => {
+                        entry.target.style.transition = 'all 0.6s ease';
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, 100);
+                    
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.tutorial-card, .feature-card').forEach(card => {
+            observer.observe(card);
         });
     </script>
 </body>
